@@ -8,38 +8,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <main class="hero-section">
-            <div class="content-wrapper">
-                <h1>AI-Powered Medical History Collection</h1>
-                <p class="subtitle">Have a natural conversation with our AI assistant to share your medical history. No forms, just talk.</p>
-                
-                <div class="recording-section">
-                    <button id="recordButton" class="record-btn">
-                        <span class="record-icon"></span>
-                        Start Conversation
-                    </button>
-                    <div id="status" class="status">Click to begin your medical history consultation</div>
+    <div class="gradient-bg">
+        <div class="container">
+            <main class="hero-section">
+                <div class="content-wrapper">
+                    <h1>AI-Powered Medical History Collection</h1>
+                    <p class="subtitle">Have a natural conversation with our AI assistant to share your medical history. No forms, just talk.</p>
+                    
+                    <div class="recording-section">
+                        <button id="recordButton" class="chat-btn">
+                            <span class="chat-icon"></span>
+                            Start Chatting
+                        </button>
+                        <div id="status" class="status">Begin your consultation in Hindi or English</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="features-section">
-                <div class="feature-card">
-                    <h3>Natural Conversation</h3>
-                    <p>Share your medical history through a comfortable, natural dialogue in Hindi or English</p>
+                <div class="features-section">
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>Natural Conversation</h3>
+                        <p>Share your medical history through a comfortable, natural dialogue in Hindi or English</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Comprehensive Care</h3>
+                        <p>Our AI assistant asks relevant follow-up questions to ensure complete information gathering</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Privacy First</h3>
+                        <p>Your medical information is always encrypted and handled with the utmost confidentiality</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Instant Processing</h3>
+                        <p>Real-time processing ensures your doctor gets organized, accurate information</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>Comprehensive Care</h3>
-                    <p>Our AI assistant asks relevant follow-up questions to ensure complete information gathering</p>
-                </div>
-            </div>
-
-            <div class="conversation-section">
-                <div id="conversationHistory" class="conversation-history">
-                    <!-- Conversation will appear here -->
-                </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
     
     <script src="app.js"></script>
