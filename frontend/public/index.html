@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Voice History</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <main class="hero-section">
+            <div class="content-wrapper">
+                <h1>AI-Powered Medical History Collection</h1>
+                <p class="subtitle">Have a natural conversation with our AI assistant to share your medical history. No forms, just talk.</p>
+                
+                <div class="recording-section">
+                    <button id="recordButton" class="record-btn">
+                        <span class="record-icon"></span>
+                        Start Conversation
+                    </button>
+                    <div id="status" class="status">Click to begin your medical history consultation</div>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <div class="feature-card">
+                    <h3>Natural Conversation</h3>
+                    <p>Share your medical history through a comfortable, natural dialogue in Hindi or English</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Comprehensive Care</h3>
+                    <p>Our AI assistant asks relevant follow-up questions to ensure complete information gathering</p>
+                </div>
+            </div>
+
+            <div class="conversation-section">
+                <div id="conversationHistory" class="conversation-history">
+                    <!-- Conversation will appear here -->
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
