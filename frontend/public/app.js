@@ -1,69 +1,51 @@
 class VoiceChat {
     constructor() {
-        this.chatButton = document.getElementById('recordButton'); // we'll rename this element later
+        this.chatButton = document.getElementById('recordButton');
         this.statusDisplay = document.getElementById('status');
+        this.heroSection = document.getElementById('heroSection');
+        this.chatInterface = document.getElementById('chatInterface');
+        this.endButton = document.getElementById('endButton');
         this.isConversationActive = false;
-        this.ws = null;
         
         this.initializeEventListeners();
     }
 
     initializeEventListeners() {
         this.chatButton.addEventListener('click', () => {
-            if (!this.isConversationActive) {
-                this.startConversation();
-            } else {
-                this.endConversation();
-            }
+            this.startConversation();
+        });
+
+        this.endButton.addEventListener('click', () => {
+            this.endConversation();
         });
     }
 
     startConversation() {
+        // Animate hero section
+        this.heroSection.classList.add('compact');
+        
+        // Show chat interface after a small delay
+        setTimeout(() => {
+            this.chatInterface.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                this.chatInterface.classList.add('visible');
+            });
+        }, 500);
+
         this.isConversationActive = true;
-        this.updateStatus('Connecting to AI assistant...');
-        this.updateButtonState(true);
-        
-        // Connect to our backend WebSocket
-        this.ws = new WebSocket('ws://localhost:8000/ws');
-        
-        this.ws.onopen = () => {
-            this.updateStatus('Connected! AI assistant will begin shortly...');
-        };
-
-        this.ws.onmessage = (event) => {
-            // Handle messages from the AI
-            const data = JSON.parse(event.data);
-            console.log('Received message:', data);
-        };
-
-        this.ws.onerror = (error) => {
-            console.error('WebSocket error:', error);
-            this.updateStatus('Error connecting to AI assistant');
-            this.endConversation();
-        };
-
-        this.ws.onclose = () => {
-            this.updateStatus('Connection closed');
-            this.endConversation();
-        };
     }
 
     endConversation() {
         this.isConversationActive = false;
-        this.updateButtonState(false);
-        if (this.ws) {
-            this.ws.close();
-        }
-        this.updateStatus('Conversation ended');
-    }
-
-    updateStatus(message) {
-        this.statusDisplay.textContent = message;
-    }
-
-    updateButtonState(isActive) {
-        this.chatButton.textContent = isActive ? 'End Conversation' : 'Start Chatting';
-        this.chatButton.classList.toggle('active', isActive);
+        
+        // Hide chat interface
+        this.chatInterface.classList.remove('visible');
+        
+        // Reset hero section
+        setTimeout(() => {
+            this.heroSection.classList.remove('compact');
+            this.chatInterface.classList.add('hidden');
+        }, 500);
     }
 }
 

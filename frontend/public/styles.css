@@ -27,6 +27,7 @@ body {
 .hero-section {
     text-align: center;
     padding: 40px 0;
+    transition: all 0.5s ease-in-out;
 }
 
 .content-wrapper {
@@ -142,23 +143,130 @@ h1:hover {
     line-height: 1.6;
 }
 
+/* Chat Interface Styles */
+.chat-interface {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+    z-index: 1000;
+}
+
+.chat-interface.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.chat-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.voice-visualization {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.voice-indicator {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b6b 0%, #e74c3c 100%);
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 20px rgba(231, 76, 60, 0.2);
+}
+
+.controls {
+    display: flex;
+    gap: 20px;
+}
+
+.control-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    color: #1a2b3b;
+}
+
+.control-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.end-button {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+/* Animation classes */
+.hero-section.compact {
+    transform: translateY(-70%);
+    scale: 0.8;
+}
+
+.hero-section.compact .features-section {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.3);
+    }
+    
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 20px rgba(239, 68, 68, 0);
+    }
+    
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
     h1 {
         font-size: 2.5rem;
     }
-
     .subtitle {
         font-size: 1.1rem;
         padding: 0 20px;
     }
-
     .chat-btn {
         padding: 16px 32px;
         font-size: 1.1rem;
     }
-
     .features-section {
         grid-template-columns: 1fr;
         padding: 0 20px;
     }
+}
+
+.hidden {
+    display: none;
 }
