@@ -143,18 +143,25 @@ h1:hover {
     line-height: 1.6;
 }
 
+:root {
+    --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --light-blue-gradient: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
+}
+
 /* Chat Interface Styles */
 .chat-interface {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: white;
+    height: 100vh;
+    background: var(--light-blue-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s ease-in-out;
-    z-index: 1000;
 }
 
 .chat-interface.visible {
@@ -163,41 +170,64 @@ h1:hover {
 }
 
 .chat-container {
-    position: relative;
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    max-width: 800px;
+    padding: 2rem;
 }
 
+.chat-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Transcript Section */
+.transcript {
+    width: 100%;
+    min-height: 150px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Voice Visualization */
 .voice-visualization {
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
+    margin: 2rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
+    position: relative;
 }
 
 .voice-indicator {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ff6b6b 0%, #e74c3c 100%);
-    animation: pulse 2s infinite;
-    box-shadow: 0 0 20px rgba(231, 76, 60, 0.2);
+    background: var(--primary-gradient);
+    opacity: 0.8;
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.2);
+    transition: all 0.3s ease;
 }
 
+/* Controls */
 .controls {
+    margin-top: 2rem;
     display: flex;
-    gap: 20px;
+    gap: 1.5rem;
 }
 
 .control-button {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     border: none;
     background: white;
@@ -207,17 +237,55 @@ h1:hover {
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
-    color: #1a2b3b;
 }
 
-.control-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+#micButton {
+    color: #4facfe;
 }
 
-.end-button {
-    background: #fee2e2;
+#micButton.muted {
+    background: #f1f5f9;
+    color: #94a3b8;
+}
+
+.control-button.end-button {
+    color: white;
+    background: var(--stop-button-color);
+}
+
+.control-button.end-button {
+    color: white;
+    background: #e74c3c;
+}
+
+#endButton {
     color: #ef4444;
+}
+
+/* Status Message */
+.status {
+    margin-top: 1rem;
+    color: #475569;
+    font-size: 1rem;
+}
+
+.recording .voice-indicator {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.3);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 20px rgba(231, 76, 60, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+    }
 }
 
 /* Animation classes */
@@ -234,17 +302,15 @@ h1:hover {
 @keyframes pulse {
     0% {
         transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.3);
+        box-shadow: 0 0 0 0 rgba(79, 172, 254, 0.3);
     }
-    
     70% {
         transform: scale(1);
-        box-shadow: 0 0 0 20px rgba(239, 68, 68, 0);
+        box-shadow: 0 0 0 20px rgba(79, 172, 254, 0);
     }
-    
     100% {
         transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+        box-shadow: 0 0 0 0 rgba(79, 172, 254, 0);
     }
 }
 
@@ -269,4 +335,115 @@ h1:hover {
 
 .hidden {
     display: none;
+}
+
+.chat-content {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.transcript {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    min-height: 150px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    display: none; /* Will be shown when there's content */
+}
+
+.transcript.has-content {
+    display: block;
+}
+
+.audio-level {
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.audio-level::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(135deg, #ff6b6b 0%, #e74c3c 100%);
+    transition: width 0.1s ease;
+}
+
+.voice-visualization {
+    position: relative;
+    margin: 40px 0;
+}
+
+.control-button.recording {
+    background: #fee2e2;
+    color: #ef4444;
+    animation: pulse 2s infinite;
+}
+
+.status {
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+    .chat-content {
+        padding: 10px;
+    }
+
+    .transcript {
+        max-height: 150px;
+        font-size: 1rem;
+        padding: 15px;
+    }
+
+    .voice-visualization {
+        margin: 20px 0;
+    }
+
+    .control-button {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Animation for recording state */
+@keyframes recording-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.3);
+    }
+    
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    }
+    
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+.recording .voice-indicator {
+    animation: recording-pulse 1.5s ease infinite;
 }

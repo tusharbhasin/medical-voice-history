@@ -1,3 +1,4 @@
+#main.py file
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import websocket
@@ -18,7 +19,4 @@ app.include_router(websocket.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Medical History Voice Collection API"}
-
-
-    
+    return {"status": "online", "service": "Medical History Voice Collection API"}

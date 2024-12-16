@@ -20,7 +20,7 @@
                             <span class="chat-icon"></span>
                             Start Chatting
                         </button>
-                        <div id="status" class="status">Begin your consultation in Hindi or English</div>
+                        <div id="heroStatus" class="status">Begin your consultation in Hindi or English</div>
                     </div>
                 </div>
 
@@ -48,33 +48,33 @@
                 </div>
             </main>
 
-            <!-- Chat Interface (initially hidden) -->
+            <!-- Chat Interface -->
             <div class="chat-interface hidden" id="chatInterface">
                 <div class="chat-container">
-                    <div class="voice-visualization">
-                        <div class="voice-indicator"></div>
-                    </div>
-                    <div class="controls">
-                        <button class="control-button mic-button" id="micButton">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                                <line x1="12" y1="19" x2="12" y2="23"></line>
-                                <line x1="8" y1="23" x2="16" y2="23"></line>
-                            </svg>
-                        </button>
-                        <button class="control-button end-button" id="endButton">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
-                        </button>
+                    <div class="chat-content">
+                        <div id="transcript" class="transcript"></div>
+                        <div class="voice-visualization">
+                            <div class="voice-indicator"></div>
+                        </div>
+                        <div class="controls">
+                            <button class="control-button" id="micButton" title="Start/Stop Recording">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" fill="currentColor"/>
+                                    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                            <button class="control-button end-button" id="endButton" title="End Conversation">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="status" class="status">Ready to start conversation</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
     <script src="app.js"></script>
 </body>
 </html>
