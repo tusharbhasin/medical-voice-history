@@ -16,7 +16,7 @@
                     <p class="subtitle">Have a natural conversation with our AI assistant to share your medical history. No forms, just talk.</p>
                     
                     <div class="recording-section">
-                        <button id="recordButton" class="chat-btn">
+                        <button id="startButton" class="chat-btn">
                             <span class="chat-icon"></span>
                             Start Chatting
                         </button>
@@ -35,42 +35,19 @@
                         <h3>Comprehensive Care</h3>
                         <p>Our AI assistant asks relevant follow-up questions to ensure complete information gathering</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔒</div>
-                        <h3>Privacy First</h3>
-                        <p>Your medical information is always encrypted and handled with the utmost confidentiality</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3>Instant Processing</h3>
-                        <p>Real-time processing ensures your doctor gets organized, accurate information</p>
-                    </div>
                 </div>
             </main>
 
             <!-- Chat Interface -->
             <div class="chat-interface hidden" id="chatInterface">
                 <div class="chat-container">
-                    <div class="chat-content">
-                        <div id="transcript" class="transcript"></div>
-                        <div class="voice-visualization">
-                            <div class="voice-indicator"></div>
-                        </div>
-                        <div class="controls">
-                            <button class="control-button" id="micButton" title="Start/Stop Recording">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" fill="currentColor"/>
-                                    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" fill="currentColor"/>
-                                </svg>
-                            </button>
-                            <button class="control-button end-button" id="endButton" title="End Conversation">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="currentColor"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div id="status" class="status">Ready to start conversation</div>
+                    <div id="transcript" class="transcript"></div>
+                    <div class="voice-visualization">
+                        <div class="voice-indicator"></div>
                     </div>
+                    <audio id="audioOutput" autoplay></audio>
+                    <button id="stopButton" class="end-button">End Chat</button>
+                    <div id="status" class="status">Connecting...</div>
                 </div>
             </div>
         </div>

@@ -1,22 +1,25 @@
-#main.py file
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import websocket
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI()
 
-# Enable CORS
+# CORS setup for frontend communication
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_credentials=True,
+    allow_origins=["*"],  # Update this with your frontend URL in production
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Include our WebSocket router
-app.include_router(websocket.router)
-
-@app.get("/")
-async def root():
-    return {"status": "online", "service": "Medical History Voice Collection API"}
+@app.get("/api/token")
+def get_openai_token():
+    """
+    Provide a secure token for the frontend.
+    """
+    return {"token": OPENAI_API_KEY}

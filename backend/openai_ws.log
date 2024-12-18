@@ -27,3 +27,8 @@
 2024-12-16 11:57:53,293 - DEBUG - [websocket.py:202] - Processing response type: input_audio_buffer.committed
 2024-12-16 11:57:53,294 - DEBUG - [websocket.py:202] - Processing response type: conversation.item.created
 2024-12-16 11:57:53,295 - DEBUG - [websocket.py:202] - Processing response type: conversation.item.input_audio_transcription.completed
+2024-12-16 12:12:52,673 - DEBUG - [websocket.py:202] - Processing response type: error
+2024-12-16 12:12:52,676 - ERROR - [websocket.py:206] - OpenAI error: Your session hit the maximum duration of 15 minutes.
+2024-12-16 12:12:52,677 - ERROR - [websocket.py:185] - Error sending audio to OpenAI: 
+2024-12-16 12:12:52,677 - ERROR - [websocket.py:189] - Error in handle_audio_stream: 
+2024-12-16 12:12:52,678 - INFO - [websocket.py:336] - Client disconnected
