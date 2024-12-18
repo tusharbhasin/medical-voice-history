@@ -10,18 +10,20 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 4000;
 
+// Directory path resolution
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Enable CORS for frontend at http://localhost:3000
 app.use(cors());
 
 // Middleware to parse JSON bodies for application/json content type
 app.use(express.json());
 
-// Directory path resolution
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 // Serve static files
-app.use(express.static(path.join(__dirname, 'frontend', 'public')));
+app.use(express.static('public'));
+
+
 
 // Proxy endpoint for OpenAI API (if needed)
 app.post('/api/openai', async (req, res) => {

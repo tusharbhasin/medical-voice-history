@@ -40,18 +40,20 @@
 
             <!-- Chat Interface -->
             <div class="chat-interface hidden" id="chatInterface">
-                <div class="chat-container">
-                    <div id="transcript" class="transcript"></div>
-                    <div class="voice-visualization">
-                        <div class="voice-indicator"></div>
+                <div class="container"> <!-- Add container wrapper -->
+                    <div class="chat-content">
+                        <div id="transcript" class="transcript"></div>
+                        <div class="voice-visualization">
+                            <div class="voice-indicator"></div>
+                        </div>
+                        <audio id="audioOutput" autoplay></audio>
+                        <div class="controls"> <!-- Add controls wrapper -->
+                            <button id="stopButton" class="control-button end-button">End Chat</button>
+                        </div>
+                        <div id="status" class="status">Connecting...</div>
                     </div>
-                    <audio id="audioOutput" autoplay></audio>
-                    <button id="stopButton" class="end-button">End Chat</button>
-                    <div id="status" class="status">Connecting...</div>
                 </div>
             </div>
-        </div>
-    </div>
     <script src="app.js"></script>
 </body>
 </html>

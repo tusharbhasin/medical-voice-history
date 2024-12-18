@@ -57,6 +57,8 @@ startButton.addEventListener("click", async () => {
         // UI transitions
         heroSection.classList.add("hidden");
         chatInterface.classList.remove("hidden");
+        chatInterface.classList.add("visible"); 
+
 
         // Request microphone access
         statusDiv.textContent = "Requesting microphone access...";
@@ -95,6 +97,7 @@ stopButton.addEventListener("click", () => {
         // Reset UI
         statusDiv.textContent = "Conversation ended.";
         heroSection.classList.remove("hidden");
+        chatInterface.classList.remove("visible"); 
         chatInterface.classList.add("hidden");
     } catch (error) {
         console.error("Error stopping session:", error);
